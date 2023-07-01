@@ -24,14 +24,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 
 
 @RestController
-@RequestMapping("explaboral")
+@RequestMapping("experiencia")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ExperienciaController {
 	
 	@Autowired
 	ExperienciaService experienciaService;
 	
-	@GetMapping("/lista")
+	@GetMapping("/listar")
 	public ResponseEntity<List<Experiencia>> list(){
 		List<Experiencia> list = experienciaService.list();
 		return new ResponseEntity<>(list, HttpStatus.OK);
@@ -51,7 +51,7 @@ public class ExperienciaController {
 		return new ResponseEntity<>(new Mensaje("Experiencia agregada"), HttpStatus.OK);
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/editar/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ExperienciaDto experDto){
 		if(!experienciaService.existsById(id))
 			return new ResponseEntity<>(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
@@ -71,7 +71,7 @@ public class ExperienciaController {
 		return new ResponseEntity<>(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
 	}
         
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/borrar/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") int id){
 		if(!experienciaService.existsById(id))
 			return new ResponseEntity<>(new Mensaje("El id no existe"),HttpStatus.OK);

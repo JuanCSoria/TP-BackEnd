@@ -52,7 +52,7 @@ public class EducacionController {
 		return new ResponseEntity<>(new Mensaje("Educación agregada"), HttpStatus.OK);
 	} 
 	
-	@PutMapping("/modificar/{id}")
+	@PutMapping("/editar/{id}")
 	public ResponseEntity<?> modificar(@PathVariable("id") int id, @RequestBody EducacionDto eduDto){
 		if(!educacionService.existsById(id))
 			return new ResponseEntity<>(new Mensaje("El ID no existe"), HttpStatus.NOT_FOUND);
