@@ -12,18 +12,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("/persona")
 @CrossOrigin(origins = "http://localhost:4200")
 
     public class PersonaController {
     @Autowired
     IPersonaService ipersonaService;
     
-    @GetMapping("/traer")
+    @GetMapping("/listar")
     public List<Persona> getPersona(){
         return ipersonaService.getPersona();
     }
@@ -58,7 +60,7 @@ import org.springframework.web.bind.annotation.RestController;
         return persona;
     }
     
-    @GetMapping("/personas/traer/perfil")
+    @GetMapping("/listar/perfil")
     public Persona findPersona(){
         return ipersonaService.findPersona((int) 1);        
     }
